@@ -27,6 +27,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         private StreamedExternalMemory _currentExternalMemory;
 
+        private readonly Box backgroundBox;
+        private readonly Box backgroundLine1;
+        private readonly Box backgroundLine2;
+        private readonly Box backgroundLine3;
+        private readonly GameBoySpeaker gameBoySpeaker;
+        private readonly Box phoneBox;
+
         private readonly GameBoyScreen _displayScreen;
 
         private readonly GameBoyPowerLed _powerLed;
@@ -45,9 +52,19 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         #region UI
 
-        protected virtual Color4 BackgroundColor => new Color4(181, 181, 178, 255);
+        protected virtual Color4 BackgroundColor { set => backgroundBox.Colour = value; }
 
-        protected virtual Color4 BackgroundLineColor => new Color4(158, 159, 155, 255);
+        protected virtual Color4 BackgroundLineColor 
+        { 
+            set
+            {
+                backgroundLine1.Colour = value;
+                backgroundLine2.Colour = value;
+                backgroundLine3.Colour = value;
+                gameBoySpeaker.SperkeColour = value;
+                phoneBox.Colour = value;
+            }
+        }
 
         protected virtual Color4 DisplayBackgroundColor => new Color4(82, 82, 94, 255);
 
@@ -114,7 +131,27 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
         public GameBoyContainer()
         {
             //Colors
-
+            BackgroundColor = new Color4(181, 181, 178, 255);
+            BackgroundLineColor = new Color4(158, 159, 155, 255);
+            DisplayBackgroundColor = new Color4(82, 82, 94, 255);
+            DisplayScreenColor = DisplayScreenColor1;//Screen off color
+            DisplayScreenColor0 = new Color4(224, 248, 208, 255);
+            DisplayScreenColor1 = new Color4(136, 192, 112, 255);
+            DisplayScreenColor2 = new Color4(52, 104, 86, 255);
+            DisplayScreenColor3 = new Color4(8, 24, 32, 255);
+            DisplayTextColor = Color4.White;
+            Banner1Color = new Color4(110, 19, 79, 255);
+            Banner2Color = new Color4(5, 2, 80, 255);
+            LedOffColor = new Color4(38, 17, 22, 255);
+            LedOnColor = new Color4(204, 68, 79, 255);
+            TextColor = new Color4(13, 24, 124, 255);
+            DPadButtonBackgroundColor = new Color4(10, 12, 24, 255);
+            DPadButtonColor = new Color4(10, 12, 24, 255);
+            DPadButtonPressedColor = new Color4(34, 41, 83, 255);
+            ABButtonColor = new Color4(154, 31, 85, 255);
+            ABButtonPressedColor = new Color4(109, 22, 62, 255);
+            OptionButtonColor = new Color4(112, 111, 119, 255);
+            OptionButtonPressedColor = new Color4(78, 77, 81, 255);
 
             //Keys
             UpKey = Key.Up;
@@ -143,32 +180,28 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                         RelativeSizeAxes = Axes.Both,
                         Children = new Drawable[]
                         {
-                            new Box
+                            backgroundBox = new Box
                             {
                                 Name = "Background",
-                                Colour = BackgroundColor,
                                 RelativeSizeAxes = Axes.Both
                             },
-                            new Box
+                            backgroundLine1 = new Box
                             {
                                 Name = "Center line",
-                                Colour = BackgroundLineColor,
                                 RelativeSizeAxes = Axes.X,
                                 Height = 3,
                                 Y = 20
                             },
-                            new Box
+                            backgroundLine2 = new Box
                             {
                                 Name = "Left line",
-                                Colour = BackgroundLineColor,
                                 Width = 3,
                                 Height = 20,
                                 X = 20,
                             },
-                            new Box
+                            backgroundLine3 = new Box
                             {
                                 Name = "Right line",
-                                Colour = BackgroundLineColor,
                                 Width = 3,
                                 Height = 20,
                                 Anchor = Anchor.TopRight,
@@ -210,7 +243,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                     },
                                 }
                             },
-                            new GameBoySpeaker(BackgroundLineColor,5)
+                            gameBoySpeaker = new GameBoySpeaker(5)
                             {
                                 Name = "Speaker",
                                 Width = 100,
@@ -222,10 +255,9 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Y = -60,
                                 Rotation = -30
                             },
-                            new Box
+                            phoneBox = new Box
                             {
                                 Name = "Phones",
-                                Colour = BackgroundLineColor,
                                 Anchor = Anchor.BottomCentre,
                                 Origin = Anchor.BottomCentre,
                                 Width = 30,
