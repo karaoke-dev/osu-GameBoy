@@ -31,6 +31,16 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         private readonly GameBoyPowerLed _powerLed;
 
+        private readonly GameBoyDpad gameBoyDpad;
+
+        private readonly GameBoyButton aGameBoyButton;
+
+        private readonly GameBoyButton bGameBoyButton;
+
+        private readonly GameBoyButton selectGameBoyButton;
+
+        private readonly GameBoyButton startGameBoyButton;
+
         #endregion
 
         #region UI
@@ -83,26 +93,39 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         #region Keys
 
-        protected virtual Key UpKey => Key.Up;
+        public virtual Key UpKey { get => gameBoyDpad.UpButtonKey; set => gameBoyDpad.UpButtonKey = value; }
 
-        protected virtual Key DownKey => Key.Down;
+        public virtual Key DownKey { get => gameBoyDpad.DownButtonKey; set => gameBoyDpad.DownButtonKey = value; }
 
-        protected virtual Key LeftKey => Key.Left;
+        public virtual Key LeftKey { get => gameBoyDpad.LeftButtonKey; set => gameBoyDpad.LeftButtonKey = value; }
 
-        protected virtual Key RightKey => Key.Right;
+        public virtual Key RightKey { get => gameBoyDpad.RightButtonKey; set => gameBoyDpad.RightButtonKey = value; }
 
-        protected virtual Key AKey => Key.Z;
+        public virtual Key AKey { get => aGameBoyButton.ButtonKey; set => aGameBoyButton.ButtonKey = value; }
 
-        protected virtual Key BKey => Key.X;
+        public virtual Key BKey { get => bGameBoyButton.ButtonKey; set => bGameBoyButton.ButtonKey = value; }
 
-        protected virtual Key OptionKey => Key.ShiftLeft;
+        public virtual Key SelectKey { get => selectGameBoyButton.ButtonKey; set => selectGameBoyButton.ButtonKey = value; }
 
-        protected virtual Key StartKey => Key.Enter;
+        public virtual Key StartKey { get => startGameBoyButton.ButtonKey; set => startGameBoyButton.ButtonKey = value; }
 
         #endregion
 
         public GameBoyContainer()
         {
+            //Colors
+
+
+            //Keys
+            UpKey = Key.Up;
+            DownKey = Key.Down;
+            LeftKey = Key.Left;
+            RightKey = Key.Right;
+            AKey = Key.Z;
+            BKey = Key.X;
+            SelectKey = Key.ShiftLeft;
+            StartKey = Key.Enter;
+
             Name = "Gameboy";
             //Initial Ui
             AddInternal(new Container
@@ -335,15 +358,11 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                         Y = 280,
                         Children = new Drawable[]
                         {
-                            new GameBoyDpad(DPadButtonBackgroundColor)
+                            gameBoyDpad = new GameBoyDpad(DPadButtonBackgroundColor)
                             {
                                 Name = "Gamepad",
                                 ButtonColor = DPadButtonColor,
                                 ButtonPressedColor = DPadButtonPressedColor,
-                                UpButtonKey = UpKey,
-                                DownButtonKey = DownKey,
-                                LeftButtonKey = LeftKey,
-                                RightButtonKey = RightKey,
                                 KeyPressedEvent = (direction,press ) =>{
                                     switch(direction)
                                     {
@@ -365,14 +384,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Height = 70,
                                 Y = -10,
                             },
-                            new GameBoyButton
+                            aGameBoyButton = new GameBoyButton
                             {
                                 Name = "A Button",
                                 ButtonText = "A",
                                 TextColor = TextColor,
                                 ButtonColor = ABButtonColor,
                                 ButtonPressedColor = ABButtonPressedColor,
-                                ButtonKey = AKey,
                                 KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.A,press),
                                 Width = 35,
                                 Height = 35,
@@ -380,14 +398,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Origin = Anchor.CentreRight,
                                 Rotation = -30
                             },
-                            new GameBoyButton
+                            bGameBoyButton = new GameBoyButton
                             {
                                 Name = "B Button",
                                 ButtonText = "B",
                                 TextColor = TextColor,
                                 ButtonColor = ABButtonColor,
                                 ButtonPressedColor = ABButtonPressedColor,
-                                ButtonKey = BKey,
                                 KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.B,press),
                                 Width = 35,
                                 Height = 35,
@@ -397,14 +414,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Y = 25,
                                 Rotation = -30
                             },
-                            new GameBoyButton
+                            selectGameBoyButton = new GameBoyButton
                             {
                                 Name = "Select Button",
                                 ButtonText = "SELECT",
                                 TextColor = TextColor,
                                 ButtonColor = OptionButtonColor,
                                 ButtonPressedColor = OptionButtonPressedColor,
-                                ButtonKey = OptionKey,
                                 KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.Select,press),
                                 Width = 33,
                                 Height = 10,
@@ -413,14 +429,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Rotation = -30,
                                 X = -20,
                             },
-                            new GameBoyButton
+                            startGameBoyButton = new GameBoyButton
                             {
                                 Name = "Start Button",
                                 ButtonText = "START",
                                 TextColor = TextColor,
                                 ButtonColor = OptionButtonColor,
                                 ButtonPressedColor = OptionButtonPressedColor,
-                                ButtonKey = StartKey,
                                 KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.Start,press),
                                 Width = 33,
                                 Height = 10,
