@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Project">
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <AssemblyName>osu.Framework.Eggs.GameBoy</AssemblyName>
+    <RootNamespace>osu.Framework</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Version>192.168.0.1-192.168.1.100</Version>
+    <Description>The egg for osu!Lazer that can play GameBoy in osu!</Description>
+    <Copyright>https://github.com/osu-Karaoke/osu-GameBoy</Copyright>
+    <PackageProjectUrl>https://github.com/osu-Karaoke/osu-GameBoy</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/osu-Karaoke/osu-GameBoy</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/osu-Karaoke/osu-GameBoy.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>osu-framework egg GameBoy .netStandard osu! andy840119</PackageTags>
+    <Authors>andy840119</Authors>
+    <Company>osu!Karaoke</Company>
+    <Product>osu!GameBoy</Product>
+    <PackageReleaseNotes>喵</PackageReleaseNotes>
+    <PackageId>osu.Framework.Eggs.GameBoy</PackageId>
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget></PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Resources\rom\defaultRom_20181206.gb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\rom\defaultRom_20181206.gb" />
+  </ItemGroup>
+  <ItemGroup Label="Package References">
+    <PackageReference Include="ManagedBass.Mix" Version="2.1.0" />
+    <PackageReference Include="ppy.osu.Framework" Version="2018.1120.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Emux\Emux.GameBoy\Emux.GameBoy.csproj" />
+  </ItemGroup>
+</Project>

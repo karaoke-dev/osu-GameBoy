@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Project">
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateProgramFile>false</GenerateProgramFile>
+    <AssemblyName>osu.Framework.Eggs.Gameboy.Tests</AssemblyName>
+    <RootNamespace>osu.Framework.Eggs.Gameboy.Tests</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup Label="Service">
+    <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
+  </ItemGroup>
+  <ItemGroup Label="Package References">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="NUnit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Appveyor.TestLogger" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\osu.Gameboy\osu.GameBoy.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\ROM\Tetris.gb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\ROM\Tetris.sav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
