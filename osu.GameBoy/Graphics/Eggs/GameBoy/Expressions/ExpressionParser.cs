@@ -154,7 +154,6 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
                             {
                                 break;
                             }
-
                         }
                         operatorStack.Push(current);
                         break;
@@ -164,7 +163,5 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
             while (operatorStack.Count > 0)
                 yield return operatorStack.Pop();
         }
-
-
     }
 }

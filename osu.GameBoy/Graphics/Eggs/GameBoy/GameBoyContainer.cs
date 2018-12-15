@@ -51,7 +51,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         protected virtual Color4 DisplayBackgroundColor => new Color4(82, 82, 94, 255);
 
-        protected virtual Color4 DisplayScreenColor => DisplayScreenColor1;//Screen off color
+        protected virtual Color4 DisplayScreenColor => DisplayScreenColor1; //Screen off color
 
         protected virtual Color4 DisplayScreenColor0 => new Color4(224, 248, 208, 255);
 
