@@ -113,9 +113,6 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         public GameBoyContainer()
         {
-            //Colors
-
-
             //Keys
             UpKey = Key.Up;
             DownKey = Key.Down;
@@ -126,7 +123,9 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             SelectKey = Key.ShiftLeft;
             StartKey = Key.Enter;
 
+            //Property
             Name = "Gameboy";
+
             //Initial Ui
             AddInternal(new Container
             {
