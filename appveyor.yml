@@ -19,7 +19,6 @@ build:
   parallel: true
   verbosity: minimal
 after_build:
-  - cmd: NVika parsereport "inspectcodereport.xml" --treatwarningsaserrors
   - cmd: dotnet pack osu.GameBoy --include-symbols /p:Version=0.0.%APPVEYOR_BUILD_VERSION%
 artifacts:
   - path: osu.GameBoy/bin/Debug/*.nupkg
