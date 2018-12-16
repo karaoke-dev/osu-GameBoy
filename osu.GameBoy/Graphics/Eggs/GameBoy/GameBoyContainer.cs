@@ -111,18 +111,10 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         #endregion
 
+        #region Ctor
+
         public GameBoyContainer()
         {
-            //Keys
-            UpKey = Key.Up;
-            DownKey = Key.Down;
-            LeftKey = Key.Left;
-            RightKey = Key.Right;
-            AKey = Key.Z;
-            BKey = Key.X;
-            SelectKey = Key.ShiftLeft;
-            StartKey = Key.Enter;
-
             //Property
             Name = "Gameboy";
 
@@ -448,6 +440,8 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                 }
             });
 
+            InitialKeys();
+
             _displayScreen.ScreenOff();
 
             AudioMixer = new GameBoyMixer();
@@ -458,6 +452,25 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             GamesharkController = new GamesharkController();
             Breakpoints = new Dictionary<ushort, BreakpointInfo>();
         }
+
+        #endregion
+
+        #region MyRegion
+
+        protected virtual void InitialKeys()
+        {
+            //Keys
+            UpKey = Key.Up;
+            DownKey = Key.Down;
+            LeftKey = Key.Left;
+            RightKey = Key.Right;
+            AKey = Key.Z;
+            BKey = Key.X;
+            SelectKey = Key.ShiftLeft;
+            StartKey = Key.Enter;
+        }
+
+        #endregion
 
         protected sealed override void AddInternal(Drawable drawable)
         {
