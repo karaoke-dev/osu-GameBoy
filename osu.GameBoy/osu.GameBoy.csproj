@@ -9,7 +9,7 @@
     <RootNamespace>osu.Framework</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>192.168.0.1-192.168.1.100</Version>
+    <Version>192.168.0.1-192.168.1.101</Version>
     <Description>The egg for osu!Lazer that can play GameBoy in osu!</Description>
     <Copyright>https://github.com/osu-Karaoke/osu-GameBoy</Copyright>
     <PackageProjectUrl>https://github.com/osu-Karaoke/osu-GameBoy</PackageProjectUrl>
@@ -23,9 +23,14 @@
     <PackageReleaseNotes>喵</PackageReleaseNotes>
     <PackageId>osu.Framework.Eggs.GameBoy</PackageId>
     <NeutralLanguage>en</NeutralLanguage>
+    <PackageIconUrl>https://raw.githubusercontent.com/osu-Karaoke/osu-GameBoy/master/images/icon_bg.png</PackageIconUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget></PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\rom\defaultRom_20181206.gb" />

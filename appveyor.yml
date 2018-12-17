@@ -1,0 +1,24 @@
+clone_depth: 1
+version: '{build}'
+skip_tags: true
+image: Visual Studio 2017
+configuration: Debug
+cache:
+  - C:\ProgramData\chocolatey\bin -> appveyor.yml
+  - C:\ProgramData\chocolatey\lib -> appveyor.yml
+install:
+  - cmd: git submodule update --init --recursive
+  - cmd: choco install resharper-clt -y
+  - cmd: choco install nvika -y
+  - cmd: pip install httpbin waitress
+  - ps: Start-Process waitress-serve "--listen=*:80 httpbin:app" -PassThru
+before_build:
+  - cmd: nuget restore
+build:
+  project: osu-GameBoy.sln
+  parallel: true
+  verbosity: minimal
+after_build:
+  - cmd: dotnet pack osu.GameBoy --include-symbols /p:Version=0.0.%APPVEYOR_BUILD_VERSION%
+artifacts:
+  - path: osu.GameBoy/bin/Debug/*.nupkg

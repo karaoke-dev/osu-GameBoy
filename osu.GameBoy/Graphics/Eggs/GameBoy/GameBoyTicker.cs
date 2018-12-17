@@ -23,7 +23,6 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         protected override void Update()
         {
-
             if (_tick)
             {
                 var time = this.Time.Current;

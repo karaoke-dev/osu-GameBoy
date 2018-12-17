@@ -107,7 +107,6 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
             return builder.ToString();
         }
 
-
         private Token ReadNextSymbol()
         {
             char c = (char)_reader.Read();
@@ -154,7 +153,6 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
                         return new Token(Terminal.BitwiseOr, "|");
                     _reader.Read();
                     return new Token(Terminal.BooleanOr, "||");
-
             }
 
             throw new SyntaxErrorException("Unrecognized character '" + c + "'.");
