@@ -544,14 +544,21 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                 { 
                     var memoryStream = new MemoryStream();
                     stream.CopyTo(memoryStream);
-                    //Load default rom
-                    LoadRom(memoryStream.ToArray(), File.Open(ramFilePath, FileMode.OpenOrCreate));
+
+                    using (var saveFileStream = File.Open(ramFilePath, FileMode.OpenOrCreate))
+                    {
+                        //Load default rom
+                        LoadRom(memoryStream.ToArray(), saveFileStream);
+                    }
                 }
             }
             else
-            { 
-                //Load default rom
-                LoadRom(File.ReadAllBytes(romFilePath), File.Open(ramFilePath, FileMode.OpenOrCreate));
+            {
+                using (var saveFileStream = File.Open(ramFilePath, FileMode.OpenOrCreate))
+                {
+                    //Load default rom
+                    LoadRom(File.ReadAllBytes(romFilePath), saveFileStream);
+                }
             }
         }
 
