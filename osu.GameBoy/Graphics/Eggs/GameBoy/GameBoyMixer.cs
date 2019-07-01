@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using Emux.GameBoy.Audio;
+using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Eggs.Gameboy;
+using osu.Framework.Graphics.Audio;
 
 namespace osu.Framework.Graphics.Eggs.GameBoy
 {
-    public class GameBoyMixer
+    public class GameBoyMixer : AudioContainer
     {
         protected int _mixer;
 
@@ -22,6 +24,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
             foreach (var channel in Channels)
             {
+                AddInternal(new DrawableTrack(channel));
                 //BassMix.MixerAddChannel(_mixer, _recording, BassFlags.MixerDownMix);
             }
         }

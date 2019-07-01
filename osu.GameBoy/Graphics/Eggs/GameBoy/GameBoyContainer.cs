@@ -436,6 +436,14 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 X = 20,
                             }
                         }
+                    },
+                    AudioMixer = new GameBoyMixer
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Child = new Container
+                        {
+                            RelativeSizeAxes = Axes.Both,
+                        },
                     }
                 }
             });
@@ -444,10 +452,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
             _displayScreen.ScreenOff();
 
-            AudioMixer = new GameBoyMixer();
-            //var player = new DirectSoundOut();
-            //player.Init(AudioMixer);
-            //player.Play();
+            
 
             GamesharkController = new GamesharkController();
             Breakpoints = new Dictionary<ushort, BreakpointInfo>();

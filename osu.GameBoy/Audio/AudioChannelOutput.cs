@@ -4,11 +4,12 @@ using System.Text;
 using Emux.GameBoy.Audio;
 using osu.Framework.Audio;
 using osu.Framework.Audio.Sample;
+using osu.Framework.Audio.Track;
 using osu.Framework.Graphics.Eggs.GameBoy;
 
 namespace osu.Framework.Graphics.Eggs.Gameboy
 {
-    public class AudioChannelOutput : IAudioChannelOutput
+    public class AudioChannelOutput : Track ,IAudioChannelOutput
     {
         public AudioChannelOutput(GameBoyMixer mixer, string name)
         {
@@ -23,6 +24,14 @@ namespace osu.Framework.Graphics.Eggs.Gameboy
         public int SampleId { get; set; }
 
         public int SampleRate { get; } = 44100;
+
+        private double currentTime;
+
+        public override double CurrentTime => currentTime;
+
+        private volatile bool isRunning;
+
+        public override bool IsRunning => isRunning;
 
         private SampleChannel sample;
 
@@ -47,6 +56,11 @@ namespace osu.Framework.Graphics.Eggs.Gameboy
             if(channel!=0)
                 Bass.ChannelPlay(channel, false);
            */
+        }
+
+        public override bool Seek(double seek)
+        {
+            throw new NotImplementedException();
         }
     }
 }
