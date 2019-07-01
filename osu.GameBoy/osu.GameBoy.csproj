@@ -1,15 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="Project">
     <OutputType>Library</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup>
+  <PropertyGroup Label="Nuget">
     <GenerateProgramFile>false</GenerateProgramFile>
     <AssemblyName>osu.Framework.Eggs.GameBoy</AssemblyName>
     <RootNamespace>osu.Framework</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>192.168.0.1-192.168.1.101</Version>
+    <Version>192.168.0.1-192.168.1.103</Version>
     <Description>The egg for osu!Lazer that can play GameBoy in osu!</Description>
     <Copyright>https://github.com/osu-Karaoke/osu-GameBoy</Copyright>
     <PackageProjectUrl>https://github.com/osu-Karaoke/osu-GameBoy</PackageProjectUrl>
@@ -40,9 +41,18 @@
   </ItemGroup>
   <ItemGroup Label="Package References">
     <PackageReference Include="ManagedBass.Mix" Version="2.1.0" />
-    <PackageReference Include="ppy.osu.Framework" Version="2018.1120.0" />
+    <PackageReference Include="ppy.osu.Framework" Version="2019.628.0" />
+  </ItemGroup>
+  <!-- Wrap refrence into package: https://stackoverflow.com/questions/44727318/pack-multiple-assemblies-with-dotnet-pack-->
+  <ItemGroup>
+    <ProjectReference Include="..\Emux\Emux.GameBoy\Emux.GameBoy.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Emux\Emux.GameBoy\Emux.GameBoy.csproj" />
+    <Content Include="bin\Release\netcoreapp2.2\Emux.GameBoy.dll">
+      <PackagePath>lib\netcoreapp2.2\</PackagePath>
+      <Pack>true</Pack>
+    </Content>
   </ItemGroup>
 </Project>

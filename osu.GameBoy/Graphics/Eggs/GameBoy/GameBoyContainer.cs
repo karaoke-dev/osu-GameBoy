@@ -179,14 +179,14 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                     new SpriteText
                                     {
                                         Colour = TextColor,
-                                        TextSize = 15,
+                                        Font = new FontUsage(size:15),
                                         Text = "Nintendo",
                                         Scale = new Vector2(1.3f,1)
                                     },
                                     new SpriteText
                                     {
                                         Colour = TextColor,
-                                        TextSize = 25,
+                                        Font = new FontUsage(size:25),
                                         Text = "GAME BOY",
                                         X = 40,
                                         Y = 5,
@@ -194,7 +194,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                     new SpriteText
                                     {
                                         Colour = TextColor,
-                                        TextSize = 10,
+                                        Font = new FontUsage(size:10),
                                         Text = "TM",
                                         X = 120,
                                         Y = 5,
@@ -283,7 +283,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                             },
                                             new SpriteText
                                             {
-                                                TextSize = 9,
+                                                Font = new FontUsage(size:9),
                                                 Text = "DOT MATRIX WITH STEREO SOUND",
                                                 Colour = DisplayTextColor,
                                             }
@@ -307,7 +307,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                             {
                                 Name = "Battery text",
                                 Text = "BATTERY",
-                                TextSize = 9,
+                                Font = new FontUsage(size:9),
                                 Anchor = Anchor.CentreLeft,
                                 Origin = Anchor.CentreLeft,
                                 Colour = DisplayTextColor,

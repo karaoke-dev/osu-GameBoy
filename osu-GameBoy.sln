@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{F82A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Emux.GameBoy", "Emux\Emux.GameBoy\Emux.GameBoy.csproj", "{0ADDD31B-9EDE-4931-B11A-3783A984664F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "osu.GameBoy.NugetTests", "osu.GameBoy.NugetTests\osu.GameBoy.NugetTests.csproj", "{D50332A3-2D17-4205-B88E-99B52D794BF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{0ADDD31B-9EDE-4931-B11A-3783A984664F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ADDD31B-9EDE-4931-B11A-3783A984664F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ADDD31B-9EDE-4931-B11A-3783A984664F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D50332A3-2D17-4205-B88E-99B52D794BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50332A3-2D17-4205-B88E-99B52D794BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50332A3-2D17-4205-B88E-99B52D794BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50332A3-2D17-4205-B88E-99B52D794BF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
