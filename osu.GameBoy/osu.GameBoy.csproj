@@ -3,8 +3,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
-    <GenerateProgramFile>false</GenerateProgramFile>
   <PropertyGroup Label="Nuget">
+    <GenerateProgramFile>false</GenerateProgramFile>
     <AssemblyName>osu.Framework.Eggs.GameBoy</AssemblyName>
     <RootNamespace>osu.Framework</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -43,7 +43,16 @@
     <PackageReference Include="ManagedBass.Mix" Version="2.1.0" />
     <PackageReference Include="ppy.osu.Framework" Version="2019.628.0" />
   </ItemGroup>
+  <!-- Wrap refrence into package: https://stackoverflow.com/questions/44727318/pack-multiple-assemblies-with-dotnet-pack-->
   <ItemGroup>
-    <ProjectReference Include="..\Emux\Emux.GameBoy\Emux.GameBoy.csproj" />
+    <ProjectReference Include="..\Emux\Emux.GameBoy\Emux.GameBoy.csproj">
+      <PrivateAssets>all</PrivateAssets>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\netcoreapp2.2\Emux.GameBoy.dll">
+      <PackagePath>lib\netcoreapp2.2\</PackagePath>
+      <Pack>true</Pack>
+    </Content>
   </ItemGroup>
 </Project>
