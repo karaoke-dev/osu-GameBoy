@@ -47,7 +47,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                 },
                 _spriteText = new SpriteText
                 {
-                    TextSize = 15,
+                    Font = new FontUsage(size: 15),
                     Anchor = Anchor.BottomCentre,
                     Origin = Anchor.TopCentre,
                     Y = 5
