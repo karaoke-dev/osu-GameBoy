@@ -13,7 +13,7 @@ namespace osu.Framework.Eggs.Gameboy.Tests.Visual
     /// You need to download GB rom first
     /// </summary>
     [TestFixture]
-    public sealed class VisualTestGameBoyEgg : TestCase
+    public sealed class VisualTestGameBoyEgg : TestScene
     {
         private readonly GameBoyContainer gameBoyContainer;
 

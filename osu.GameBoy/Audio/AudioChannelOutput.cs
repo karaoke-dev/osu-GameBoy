@@ -33,7 +33,7 @@ namespace osu.Framework.Graphics.Eggs.Gameboy
             if (Enabled)
                 Buffer.BlockCopy(sampleData, offset * sizeof(float), newSampleData, 0, length * sizeof(float));
 
-            sample = new SampleChannelBass(new SampleBass(newSampleData), (a) => { });
+            sample = new Framework.Audio.SampleChannelBass(new SampleBass(newSampleData), (a) => { });
             sample.Play();
 
             //用原本NAudio格式下去改
