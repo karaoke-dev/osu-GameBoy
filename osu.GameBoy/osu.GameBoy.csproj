@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="Project">
     <OutputType>Library</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup Label="Nuget">
     <GenerateProgramFile>false</GenerateProgramFile>
@@ -10,7 +10,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>192.168.0.1-192.168.1.102</Version>
+    <Version>192.168.0.1-192.168.1.103</Version>
     <Description>The egg for osu!Lazer that can play GameBoy in osu!</Description>
     <Copyright>https://github.com/osu-Karaoke/osu-GameBoy</Copyright>
     <PackageProjectUrl>https://github.com/osu-Karaoke/osu-GameBoy</PackageProjectUrl>
