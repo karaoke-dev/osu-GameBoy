@@ -22,7 +22,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             var bByte = (byte)(ScreenColor.B * 255);
             var rawData = new byte[160 * 144 * sizeof(int)];
 
-            for (int i = 0; i < rawData.Length; i += 4)
+            for (var i = 0; i < rawData.Length; i += 4)
             {
                 rawData[i] = rByte;
                 rawData[i + 1] = gByte;

@@ -83,7 +83,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                             Height = 10,
                             Colour = Color4.Black,
                             Anchor = Anchor.TopCentre,
-                            Origin = Anchor.Centre,
+                            Origin = Anchor.Centre
                         },
                         _downButton = new Triangle
                         {
@@ -154,7 +154,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
         protected virtual void ChangeKeyEvent(UIEvent uiEvent)
         {
             DPadDirection? direction = null;
-            bool press = false;
+            var press = false;
 
             switch (uiEvent)
             {
@@ -174,25 +174,25 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                     break;
             }
 
-            if (direction != null)
-            {
-                ChangeKeypadColor(direction.Value, press);
-                KeyPressedEvent?.Invoke(direction.Value, press);
-            }
+            if (direction == null) 
+                return;
+            
+            ChangeKeypadColor(direction.Value, press);
+            KeyPressedEvent?.Invoke(direction.Value, press);
         }
 
         protected virtual DPadDirection? GetDPadDirection(Key key)
         {
             if (key == UpButtonKey)
                 return DPadDirection.Up;
-            else if (key == DownButtonKey)
+            if (key == DownButtonKey)
                 return DPadDirection.Down;
-            else if (key == LeftButtonKey)
+            if (key == LeftButtonKey)
                 return DPadDirection.Left;
-            else if (key == RightButtonKey)
+            if (key == RightButtonKey)
                 return DPadDirection.Right;
-            else
-                return null;
+            
+            return null;
         }
 
         protected virtual DPadDirection? GetDPadDirection(Vector2 mouseLocalPosition)

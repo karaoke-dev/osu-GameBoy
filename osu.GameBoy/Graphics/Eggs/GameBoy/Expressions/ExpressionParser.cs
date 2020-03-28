@@ -144,8 +144,8 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
                         while (operatorStack.Count > 0)
                         {
                             var lastOperator = operatorStack.Peek();
-                            int lastPrecedence = Array.IndexOf(OperatorPrecedence, lastOperator.Terminal);
-                            int currentPrecedence = Array.IndexOf(OperatorPrecedence, current.Terminal);
+                            var lastPrecedence = Array.IndexOf(OperatorPrecedence, lastOperator.Terminal);
+                            var currentPrecedence = Array.IndexOf(OperatorPrecedence, current.Terminal);
                             if (lastPrecedence <= currentPrecedence)
                             {
                                 yield return operatorStack.Pop();

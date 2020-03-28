@@ -154,7 +154,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Colour = BackgroundLineColor,
                                 Width = 3,
                                 Height = 20,
-                                X = 20,
+                                X = 20
                             },
                             new Box
                             {
@@ -164,7 +164,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Height = 20,
                                 Anchor = Anchor.TopRight,
                                 Origin = Anchor.TopRight,
-                                X = -20,
+                                X = -20
                             },
                             new FillFlowContainer
                             {
@@ -189,7 +189,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                         Font = new FontUsage(size:25),
                                         Text = "GAME BOY",
                                         X = 40,
-                                        Y = 5,
+                                        Y = 5
                                     },
                                     new SpriteText
                                     {
@@ -197,8 +197,8 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                         Font = new FontUsage(size:10),
                                         Text = "TM",
                                         X = 120,
-                                        Y = 5,
-                                    },
+                                        Y = 5
+                                    }
                                 }
                             },
                             new GameBoySpeaker(BackgroundLineColor,5)
@@ -221,7 +221,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Origin = Anchor.BottomCentre,
                                 Width = 30,
                                 Height = 5,
-                                Y = -5,
+                                Y = -5
                             }
                         }
                     },
@@ -241,7 +241,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                             {
                                 Name = "Background",
                                 Colour = DisplayBackgroundColor,
-                                RelativeSizeAxes = Axes.Both,
+                                RelativeSizeAxes = Axes.Both
                             },
                             new Container
                             {
@@ -311,7 +311,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 Anchor = Anchor.CentreLeft,
                                 Origin = Anchor.CentreLeft,
                                 Colour = DisplayTextColor,
-                                X = 10,
+                                X = 10
                             },
                             new Container
                             {
@@ -325,7 +325,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                         Colour = Color4.Black,
                                         Origin = Anchor.Centre,
                                         Width = 160 * 0.91f,
-                                        Height = 144 * 0.91f,
+                                        Height = 144 * 0.91f
                                     },
                                     _displayScreen = new GameBoyScreen
                                     {
@@ -333,7 +333,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                         Origin = Anchor.Centre,
                                         Width = 160 * 0.9f,
                                         Height = 144 * 0.9f,
-                                        ScreenColor = DisplayScreenColor,
+                                        ScreenColor = DisplayScreenColor
                                     }
                                 }
                             },
@@ -373,7 +373,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 },
                                 Width = 70,
                                 Height = 70,
-                                Y = -10,
+                                Y = -10
                             },
                             aGameBoyButton = new GameBoyButton
                             {
@@ -382,7 +382,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 TextColor = TextColor,
                                 ButtonColor = ABButtonColor,
                                 ButtonPressedColor = ABButtonPressedColor,
-                                KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.A,press),
+                                KeyPressedEvent = press=> ButtonPressChanged(GameBoyPadButton.A,press),
                                 Width = 35,
                                 Height = 35,
                                 Anchor = Anchor.TopRight,
@@ -396,7 +396,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 TextColor = TextColor,
                                 ButtonColor = ABButtonColor,
                                 ButtonPressedColor = ABButtonPressedColor,
-                                KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.B,press),
+                                KeyPressedEvent = press=> ButtonPressChanged(GameBoyPadButton.B,press),
                                 Width = 35,
                                 Height = 35,
                                 Anchor = Anchor.TopRight,
@@ -412,13 +412,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 TextColor = TextColor,
                                 ButtonColor = OptionButtonColor,
                                 ButtonPressedColor = OptionButtonPressedColor,
-                                KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.Select,press),
+                                KeyPressedEvent = press=> ButtonPressChanged(GameBoyPadButton.Select,press),
                                 Width = 33,
                                 Height = 10,
                                 Anchor = Anchor.BottomCentre,
                                 Origin = Anchor.BottomCentre,
                                 Rotation = -30,
-                                X = -20,
+                                X = -20
                             },
                             startGameBoyButton = new GameBoyButton
                             {
@@ -427,13 +427,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
                                 TextColor = TextColor,
                                 ButtonColor = OptionButtonColor,
                                 ButtonPressedColor = OptionButtonPressedColor,
-                                KeyPressedEvent = (press)=> ButtonPressChanged(GameBoyPadButton.Start,press),
+                                KeyPressedEvent = press=> ButtonPressChanged(GameBoyPadButton.Start,press),
                                 Width = 33,
                                 Height = 10,
                                 Anchor = Anchor.BottomCentre,
                                 Origin = Anchor.BottomCentre,
                                 Rotation = -30,
-                                X = 20,
+                                X = 20
                             }
                         }
                     }
@@ -484,22 +484,22 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         public Emux.GameBoy.GameBoy CurrentDevice
         {
-            get { return _currentDevice; }
+            get => _currentDevice;
             private set
             {
-                if (_currentDevice != value)
+                if (_currentDevice == value) 
+                    return;
+                
+                _currentDevice = value;
+                if (value != null)
                 {
-                    _currentDevice = value;
-                    if (value != null)
-                    {
-                        AudioMixer.Connect(value.Spu);
-                        GamesharkController.Device = value;
+                    AudioMixer.Connect(value.Spu);
+                    GamesharkController.Device = value;
 
-                        //Connect output
-                        _currentDevice.Gpu.VideoOutput = _displayScreen;
-                    }
-                    OnDeviceChanged();
+                    //Connect output
+                    _currentDevice.Gpu.VideoOutput = _displayScreen;
                 }
+                OnDeviceChanged();
             }
         }
 
@@ -516,14 +516,14 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
         public void UnloadDevice()
         {
             var device = _currentDevice;
-            if (device != null)
-            {
-                device.Terminate();
-                _currentExternalMemory.Dispose();
-                _currentDevice = null;
-                _displayScreen.ScreenOff();
-                OnDeviceUnloaded(new DeviceEventArgs(device));
-            }
+            if (device == null) 
+                return;
+            
+            device.Terminate();
+            _currentExternalMemory.Dispose();
+            _currentDevice = null;
+            _displayScreen.ScreenOff();
+            OnDeviceUnloaded(new DeviceEventArgs(device));
         }
 
         public void LoadRom(string romFilePath, string ramFilePath)
@@ -650,13 +650,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         private void ApplyColorPalettes()
         {
-            if (CurrentDevice != null)
-            {
-                CurrentDevice.Gpu.Color0 = ConvertColor(DisplayScreenColor0);
-                CurrentDevice.Gpu.Color1 = ConvertColor(DisplayScreenColor1);
-                CurrentDevice.Gpu.Color2 = ConvertColor(DisplayScreenColor2);
-                CurrentDevice.Gpu.Color3 = ConvertColor(DisplayScreenColor3);
-            }
+            if (CurrentDevice == null) 
+                return;
+            
+            CurrentDevice.Gpu.Color0 = ConvertColor(DisplayScreenColor0);
+            CurrentDevice.Gpu.Color1 = ConvertColor(DisplayScreenColor1);
+            CurrentDevice.Gpu.Color2 = ConvertColor(DisplayScreenColor2);
+            CurrentDevice.Gpu.Color3 = ConvertColor(DisplayScreenColor3);
         }
 
         private void ButtonPressChanged(GameBoyPadButton button, bool press)

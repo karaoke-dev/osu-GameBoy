@@ -41,7 +41,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
         {
             Children = new Drawable[]
             {
-                _circle = new Circle()
+                _circle = new Circle
                 {
                     RelativeSizeAxes = Axes.Both
                 },
@@ -73,11 +73,11 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         protected override void OnKeyUp(KeyUpEvent e)
         {
-            if (e.Key == ButtonKey)
-            {
-                _circle.Colour = ButtonColor;
-                KeyPressedEvent?.Invoke(false);
-            }
+            if (e.Key != ButtonKey) 
+                return;
+            
+            _circle.Colour = ButtonColor;
+            KeyPressedEvent?.Invoke(false);
         }
 
         protected override bool OnMouseDown(MouseDownEvent e)

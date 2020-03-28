@@ -23,16 +23,16 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
 
         protected override void Update()
         {
-            if (_tick)
-            {
-                var time = this.Time.Current;
+            if (!_tick) 
+                return;
+            
+            var time = Time.Current;
 
-                //Limit to 60HZ par second
-                if ((time - _lastTickleTime) > (1.0f / 60.0f) * 1000)
-                {
-                    Tick?.Invoke(this, EventArgs.Empty);
-                    _lastTickleTime = time;
-                }
+            //Limit to 60HZ par second
+            if (time - _lastTickleTime > (1.0f / 60.0f) * 1000)
+            {
+                Tick?.Invoke(this, EventArgs.Empty);
+                _lastTickleTime = time;
             }
         }
     }
