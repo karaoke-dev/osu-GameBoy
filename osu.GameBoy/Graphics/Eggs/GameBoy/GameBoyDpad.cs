@@ -135,10 +135,9 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             return base.OnKeyDown(e);
         }
 
-        protected override bool OnKeyUp(KeyUpEvent e)
+        protected override void OnKeyUp(KeyUpEvent e)
         {
             ChangeKeyEvent(e);
-            return base.OnKeyUp(e);
         }
 
         protected override bool OnMouseDown(MouseDownEvent e)
@@ -147,10 +146,9 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             return base.OnMouseDown(e);
         }
 
-        protected override bool OnMouseUp(MouseUpEvent e)
+        protected override void OnMouseUp(MouseUpEvent e)
         {
             ChangeKeyEvent(e);
-            return base.OnMouseUp(e);
         }
 
         protected virtual void ChangeKeyEvent(UIEvent uiEvent)

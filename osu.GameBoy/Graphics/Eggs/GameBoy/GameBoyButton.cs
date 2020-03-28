@@ -71,14 +71,13 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             return base.OnKeyDown(e);
         }
 
-        protected override bool OnKeyUp(KeyUpEvent e)
+        protected override void OnKeyUp(KeyUpEvent e)
         {
             if (e.Key == ButtonKey)
             {
                 _circle.Colour = ButtonColor;
                 KeyPressedEvent?.Invoke(false);
             }
-            return base.OnKeyUp(e);
         }
 
         protected override bool OnMouseDown(MouseDownEvent e)
@@ -88,11 +87,10 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             return base.OnMouseDown(e);
         }
 
-        protected override bool OnMouseUp(MouseUpEvent e)
+        protected override void OnMouseUp(MouseUpEvent e)
         {
             _circle.Colour = ButtonColor;
             KeyPressedEvent?.Invoke(false);
-            return base.OnMouseUp(e);
         }
     }
 }
