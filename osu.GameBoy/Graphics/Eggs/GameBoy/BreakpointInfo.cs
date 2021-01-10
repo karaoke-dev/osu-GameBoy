@@ -21,25 +21,22 @@ namespace osu.Framework.Graphics.Eggs.GameBoy
             get;
         }
 
-        public ushort Address
-        {
-            get { return Breakpoint.Offset; }
-        }
+        public ushort Address => Breakpoint.Offset;
 
         public string ConditionString
         {
-            get { return _conditionString; }
+            get => _conditionString;
             set
             {
-                if (_conditionString != value)
-                {
-                    Breakpoint.Condition = string.IsNullOrEmpty(value)
-                        ? Breakpoint.BreakAlways
-                        : ExpressionParser.CompileExpression(value);
+                if (_conditionString == value) 
+                    return;
+                
+                Breakpoint.Condition = string.IsNullOrEmpty(value)
+                    ? Breakpoint.BreakAlways
+                    : ExpressionParser.CompileExpression(value);
 
-                    _conditionString = value;
-                    OnPropertyChanged(nameof(ConditionString));
-                }
+                _conditionString = value;
+                OnPropertyChanged(nameof(ConditionString));
             }
         }
 

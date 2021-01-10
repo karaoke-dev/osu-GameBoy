@@ -52,7 +52,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
         {
             while (true)
             {
-                int c = _reader.Peek();
+                var c = _reader.Peek();
                 if (c == -1 || !char.IsWhiteSpace((char)c))
                     break;
                 _reader.Read();
@@ -64,14 +64,14 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
             if (!HasNext())
                 throw new EndOfStreamException();
 
-            char c = (char)_reader.Peek();
+            var c = (char)_reader.Peek();
 
             _bufferedToken = char.IsLetterOrDigit(c) ? ReadNextWord() : ReadNextSymbol();
         }
 
         private Token ReadNextWord()
         {
-            string word = ReadWhile(char.IsLetterOrDigit);
+            var word = ReadWhile(char.IsLetterOrDigit);
             Terminal terminal;
 
             if (Registers.Contains(word))
@@ -92,11 +92,11 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
 
             while (true)
             {
-                int p = _reader.Peek();
+                var p = _reader.Peek();
                 if (p == -1)
                     break;
 
-                char c = (char)p;
+                var c = (char)p;
                 if (!condition(c))
                     break;
 
@@ -109,7 +109,7 @@ namespace osu.Framework.Graphics.Eggs.GameBoy.Expressions
 
         private Token ReadNextSymbol()
         {
-            char c = (char)_reader.Read();
+            var c = (char)_reader.Read();
             switch (c)
             {
                 case '(':
