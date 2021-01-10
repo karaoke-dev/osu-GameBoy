@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup Label="Package References">
     <PackageReference Include="ManagedBass.Mix" Version="3.0.0" />
-    <PackageReference Include="ppy.osu.Framework" Version="2020.327.0" />
+    <PackageReference Include="ppy.osu.Framework" Version="2021.106.0" />
   </ItemGroup>
   <!-- Wrap refrence into package: https://stackoverflow.com/questions/44727318/pack-multiple-assemblies-with-dotnet-pack-->
   <ItemGroup>
@@ -50,8 +50,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Release\netcoreapp2.2\Emux.GameBoy.dll">
-      <PackagePath>lib\netcoreapp2.2\</PackagePath>
+    <Content Include="bin\Debug\netstandard2.1\Emux.GameBoy.dll">
+      <PackagePath>lib\netstandard2.1\</PackagePath>
       <Pack>true</Pack>
     </Content>
   </ItemGroup>
